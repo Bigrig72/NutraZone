@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+<body class="Index-body">
+    <header>
+    </header>
+    <main>
+        <div class="text-center">
+            <h1 class="display-4">Welcome To The Great NutraZone App</h1>
+            <h2>Show a video only if they have not registered-- Video to let everyone know what my vision is and what this app is for.</h2>
+
+            <h1>New to the site Register and begin buiding your plan</h1>
+
+        </div>
+        <div class="login-container">
+            <div id="login">
+                <a asp-controller="Account" asp-action="Login" >LOGIN</a>
+            </div>
+            <div id="register">
+                <a asp-action="Register" asp-controller="Account">REGISTER</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
