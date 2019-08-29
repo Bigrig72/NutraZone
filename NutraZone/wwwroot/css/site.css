@@ -78,3 +78,12 @@ body {
     margin: 0px auto;
     top: 5vw;
 }
+
+#register {
+    padding: 6%;
+    border: .1em solid black;
+    width: 37%;
+    border-radius: 2vw;
+    text-align: center;
+    margin: 0px auto;
+}
