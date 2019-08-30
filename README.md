@@ -1,2 +1,0 @@
-# NutraZone
-All In One Nutrition- Customize, Design, Deliver. Tailor your plan for your body type, medical needs and caloric requirement.  Design a custom profile that will give you weekly recipes that fit your specific needs for your body. Build a custom weekly plan and shopping list with those recipes. Have them prepared and delivered to your home. Set goals, see graphs on projected weight loss or gain, macro control and much more. 
