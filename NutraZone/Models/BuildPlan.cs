@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,6 +24,7 @@ namespace NutraZone.Models
     {
         Weights =1,
         Endurance,
+        [Display(Name = "Body Weight")]
         BodyWeight,
         Athlete,
         Recreational,
@@ -32,24 +34,31 @@ namespace NutraZone.Models
     }
     public enum Lifestyle
     {
+        [Display(Name = "Sedentary Parent")]
         SedentaryParent = 1,
+        [Display(Name = "Active Parent")]
         ActiveParent,
         Student,
+        [Display(Name = "Young Professional")]
         YoungProfessional,
         Elderly,
         Party,
+        [Display(Name = "Body Builder")]
         Bodybuilder,
         Model,
+        [Display(Name = "Stay at home mom")]
         StayHomeMom,
         Single
     }
     public enum Goals
     {
         FatLoss = 1,
+        [Display(Name = "Build Muscle")]
         BuildMuscle,
         Maintain,
         Compete,
         Tone,
+        [Display(Name = "Gain Weight")]
         GainWeight,
         Performance
     }
