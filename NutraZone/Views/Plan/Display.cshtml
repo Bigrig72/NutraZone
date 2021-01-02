@@ -1,0 +1,49 @@
+﻿@model Recipe
+@{
+    ViewData["Title"] = "Display";
+}
+<style>
+
+
+
+</style>
+<h1>Display results of the recipe</h1>
+
+<div>
+    <h1>You have chosen the recipe: @Model.Title </h1>
+
+    <h2>Your recipe will have a total minute cook time of: @Model.CookingMinutes minutes</h2>
+    <h2>Your recipe will also only have a total minute prep time of: @Model.PreparationMinutes minutes</h2>
+    <h2> your recipe- @Model.Title will be ready in total time- @Model.ReadyInMinutes minutes</h2>
+    <div>
+        <h1>The diet this recipe includes are:</h1>
+        <ul>
+            @foreach (string item in @Model.Diets)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+
+    <h1>The overall instructions of this recipe are: @Model.Instructions</h1>
+
+    <h1>The ingredients and amounts you will need are:</h1>
+    <ul>
+        @foreach (var item in @Model.ListOfIngredients)
+        {
+            <li>@item.Amount, @item.Unit of @item.Name, found in aisle: @item.Aisle</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <h1>The steps to the recipe are as follows:</h1>
+    <ul>
+       @foreach (var step in @Model.Steps)
+       {
+           <li>@step</li>
+       }
+    </ul>
+
+</div>
+

@@ -1,8 +1,109 @@
-﻿
+﻿@model NutraZone.Models.RegisterUser
+@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<ApplicationUser> SignInManager
+
 @{
     ViewData["Title"] = "Register";
     Layout = "_Layout";
 }
+<style>
+    .OutterContainer {
+        width: 18vw;
+        padding: 3vw;
+        padding-right: 2vw;
+        margin: 0px auto;
+        border: 1px solid greenyellow;
+    }
 
-<h1>Register Form here</h1>
+    .display-4 {
+        font-size: 1.7em;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+
+    button.btn.btn-primary {
+        background: black;
+        border: 1px solid greenyellow;
+        margin-top: 2vh;
+        margin-left: 3vw;
+    }
+
+    .justify-content-left.links {
+        position: relative;
+        right: 3vw;
+        width: 15vw;
+    }    
+</style>
+
+<section>
+    @*@if (!SignInManager.IsSignedIn(User))
+        {*@
+    <div class="OutterContainer">
+        <div id="registerWrapper">
+            <form method="post">
+                <h1 class="display-4">Please Register</h1>
+                <hr class="my-4">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" />
+                <span asp-validation-for="FirstName"></span>
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" />
+                <span asp-validation-for="LastName"></span>
+
+                <label asp-for="Birthday"></label>
+                <input type="date" asp-for="Birthday" />
+                <span asp-validation-for="Birthday"></span>
+
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email"></span>
+
+                <label asp-for="Password"></label>
+                <input asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword"></span>
+
+                <button type="submit" class="btn btn-primary">Register</button>               
+            </form>
+            <div class="card-footer">
+                <div class="justify-content-left links">
+                    Already have an account? <a asp-controller="Home" asp-action="Landing">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*}
+        else
+        {
+            <h1>No need to register! you are already registered!!!!</h1>
+        }*@
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

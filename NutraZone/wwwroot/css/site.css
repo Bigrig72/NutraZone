@@ -39,6 +39,7 @@ button.accept-policy {
 html {
   position: relative;
   min-height: 100%;
+  background: black;
 }
 
 body {
@@ -55,19 +56,22 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-.layout-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    left: 0;
-}
+
 .layout-footer {
     position: fixed;
     bottom: 0;
-    border-top: 1px solid black;
+    border-top: 1px solid greenyellow;
     width: 100%;
     left: 0;
-    height: 9vh;
+    height: 5vh;
+    color:white;
+}
+
+.layout-header {
+    background: black;    
+}
+#currentlyLoggedInStatus{
+    color: white;
 }
 .Index-body {
     border: 3px solid black;
@@ -86,4 +90,39 @@ body {
     border-radius: 2vw;
     text-align: center;
     margin: 0px auto;
+}
+
+#outterWrapper{
+    background: black;
+    color: white;
+}
+
+a.navbar-brand {
+    color: greenyellow;
+    font-family: sans-serif;
+    font-weight: 500;
+    padding-right: 9px;   
+}
+
+.nav-link{
+    color: white;
+}
+
+body{
+    background: black;
+}
+
+ul.navbar-nav.flex-grow-1 {
+    border-left: 1px solid greenyellow;
+    border-bottom: 1px solid greenyellow;
+}
+#welcomeName {
+    position: fixed;
+    top: 44px;
+    right: 0;
+    margin-right: 1%;
+}
+
+.navbar-toggler .icon-bar {
+    background-color: #fff !important;
 }

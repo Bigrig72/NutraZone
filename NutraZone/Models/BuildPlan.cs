@@ -9,7 +9,7 @@ namespace NutraZone.Models
     public class BuildPlan
     {
         public int ID { get; set; }
-        public string UserEmailID { get; set; }
+        public string RegisterUserID { get; set; }
         public string BodyType { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
@@ -18,6 +18,9 @@ namespace NutraZone.Models
         public Goals Healthgoals { get; set; }
         public int Calories { get; set; }
         public string MedicalHistory { get; set; }
+        public int MealsPerDayPrefrence { get; set; }
+
+        public RegisterUser User { get; set; }
         public List<Recipe> Recipies { get; set; }
     }
     public enum FitnessStyle

@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NutraZone.Models
 {
     public class RegisterUser
     {
+        public int RegisterUserId { get; set; }
+        public int GroceryBagId { get; set; }
+
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
@@ -33,5 +34,7 @@ namespace NutraZone.Models
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation do not match")]
         public string ConfirmPassword { get; set; }
+
+        //public GroceryBag PersonalGroceryBag { get; set; }
     }
 }

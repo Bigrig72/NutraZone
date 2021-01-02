@@ -1,8 +1,121 @@
-﻿
-@{
-    ViewData["Title"] = "Landing";
-}
+﻿@model NutraZone.ViewModels.LoginUser
+@using NutraZone.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
 
-<h1>Landing Page I AM A:</h1>
-<a asp-action="Index" asp-controller="Home">New User</a>
-<a asp-action="Login" asp-controller="Account">Existing User</a>
+@{
+    ViewData["Title"] = "Login";
+    string doesUserExist = ((string)TempData["UserExists"] ==  null ? "" : (string)TempData["UserExists"] );
+}
+<style>
+    #welcomeContainer {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-family: initial;
+        margin-top: 7vh;
+    }
+
+    #loginButtons {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-top: 11vh;
+    }
+
+        #loginButtons a {
+            border: 3px solid white;
+            padding: 1%;
+            border-radius: 50px;
+            color: greenyellow;
+        }
+
+    .card {
+        margin-top: 6vh;
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background: black;
+        background-clip: border-box;
+        border: 1px solid greenyellow;
+        border-radius: 0.25rem;
+    }
+
+    .alert-success {
+        height: 6vh;
+        width: 23%;
+        text-align: center;
+        margin: 0px auto;
+        border-radius: 10px;
+        padding-top: 1vh;
+    }
+
+    .card-body {
+        display: block;
+        width: 12vw;
+    }
+</style>
+@if (doesUserExist == "invalid")
+{
+    <div class="alert-success">
+        You are already a registered user, please login!
+    </div>
+}
+<div id="welcomeContainer">
+    <h1>Welcome To NutraZone</h1>
+    <h3>The one app that gives you all of your nutritional needs in one place!</h3>
+</div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <section class="Outter">
+        <div class="container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Sign In</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input class="form-group" id="email" asp-for="Email" />
+                                <h5 asp-validation-for="Email"></h5>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input id="password" class="form-group" asp-for="Password" />
+                                <h5 asp-validation-for="password"></h5>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox">Remember me</label>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" asp-controller="Account" asp-action="Login" class="btn float-right login_btn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account? <a asp-controller="Account" asp-action="Register">New User</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+}
+<script type="text/javascript">
+
+    window.setTimeout(function () {     
+        $(".alert-success").slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 4000);
+
+</script>

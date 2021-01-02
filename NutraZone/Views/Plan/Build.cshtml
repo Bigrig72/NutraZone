@@ -1,8 +1,186 @@
-﻿
+﻿@model UsersCaloriesCalculated
 @{
     ViewData["Title"] = "Build";
     Layout = "_Layout";
-}
+    var RecipeID = this.ViewContext.RouteData.Values["id"];
 
-<h1>Build a plan</h1>
+}
+<style>
+ 
+
+    caption {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        color: white;
+        font-weight: 700;
+        text-align: left;
+        text-decoration: underline;
+        caption-side: top;
+    }
+
+    #titleContainer {        
+        font-style: italic;
+    }
+
+
+    #titleContainer h5 {
+        text-shadow: 1px 1px white;
+        font-weight: 300 !important;
+        margin-left: 5%;
+        margin-top: 5vh;
+    }
+
+    #dropdownMenuButton {
+        background: black;
+        width: 100%;
+        margin-top: 1vh;
+        margin-left: .5vh;
+    }
+    .dropdown-menu {
+        width: 100%;
+    }
+    #calorieTable td input{
+        margin-top: 1vh;
+        margin-left: .5vh;
+    }
+    #calorieTable td label {
+       
+        margin-left: .5vh;
+    }
+
+    #calorieTable th {
+        margin-right: 1vh;
+    }
+    #macroForm {
+        width: 22%;
+        margin-left: 5%;     
+        border-radius: 2%;
+        padding: 1%;
+    }
+    #calcButton {
+        background: black;
+        color: white;
+        border-radius: 5%;
+        border: 1px solid greenyellow;
+    }
+</style>
+<div id="titleContainer">
+    <h5>Let's start with figuring out your nutritional needs</h5>
+</div>
+<div id="nutritionalNeeds">
+    <div id="macroForm">
+        <form>
+            <table id="calorieTable">
+                <caption>Calorie Calculator</caption>
+                <tr>
+                    <th>Gender:</th>
+                    <td>
+                        <label for="male">Male</label>
+                        <input asp-for="Gender" type="radio" checked="checked" id="male" name="gender" value="male">
+                        <label for="female">Female</label>
+                        <input asp-for="Gender" type="radio" id="female" name="gender" value="female">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Height(cm):</th>
+                    <td><input asp-for="HeightInCentimeters" type="number" id="height" /></td>
+                </tr>
+                <tr>
+                    <th>Current Weight:</th>
+                    <td><input asp-for="Weight" type="number" id="weight" /></td>
+                </tr>
+                <tr>
+                    <th>Age:</th>
+                    <td><input asp-for="Age" type="number" id="age" /></td>
+                </tr>
+                <tr>
+                    <th>Diet Preference:</th>
+                    <td>
+                        <div class="dropdown">
+                            <select id="dropdownMenuButton" class="btn btn-secondary dropdown-toggle" asp-for="DietType">
+                                <option>Select One</option>
+                                <option>Vegetarian</option>
+                                <option>Gluten Free</option>
+                                <option>Ketogenic</option>
+                                <option>Pescetarian</option>
+                                <option>Paleo</option>
+                                <option>Whole30</option>
+                            </select>
+                            @*<button class="btn btn-secondary dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Diet Preference
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                
+                                <a class="dropdown-item" href="#">Gluten Free</a>
+                                <a class="dropdown-item" href="#"></a>
+                                <a class="dropdown-item" href="#"></a>
+                                <a class="dropdown-item" href="#"></a>
+                                <a class="dropdown-item" href="#">Primal</a>
+                                <a class="dropdown-item" href="#"></a>
+                            </div>*@
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Activity Level:</th>
+                    <td style="padding-top: 1vh;">
+                        <label for="sedentary">Sedentary</label>
+                        <input asp-for="ActivityLevel" type="radio" checked="checked" id="sedentary" name="activityLevel" value="1.2">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <label for="lightlyActive">Lightly Active</label>
+                        <input  asp-for="ActivityLevel" type="radio" id="lightlyActive" name="activityLevel" value="1.375">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <label for="moderatelyActive">Moderately Active</label>
+                        <input  asp-for="ActivityLevel" type="radio" id="moderatelyActive" name="activityLevel" value="1.55">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <label for="veryActive">Very Active</label>
+                        <input  asp-for="ActivityLevel" type="radio" id="veryActive" name="activityLevel" value="1.725">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <label for="extraActive">Extra Active</label>
+                        <input  asp-for="ActivityLevel" type="radio" id="extraActive" name="activityLevel" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>                   
+                    <td> <button id="calcButton" type="submit" asp-controller="Plan" asp-action="CalculateCalories" class="btn float-left login_btn">Calculate</button></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <h5>Total Calories:</h5><h6>@(Model.TotalCalories == null ? "" : Model.TotalCalories)</h6>
+</div>
+
+@*<form method="get" asp-action="RecipeListView" asp-controller="Plan">
+    <div class="form-group">
+        <label for="url">Find your recipe by chosen website:</label>
+        <input type="text" data-val="true" value="" name="recipeUrl" class="form-control" id="url-find" placeholder="Enter url">
+        <input type="submit" value="find recipe" />
+
+    </div>
+</form>*@
+
+
+
+
+
 

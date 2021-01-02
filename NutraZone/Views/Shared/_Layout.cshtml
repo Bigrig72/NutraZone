@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@using NutraZone.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+@{ 
+  
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -18,36 +24,45 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header class="layout-header">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <header class="layout-header">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NutraZone</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <button class="navbar-toggler navbar-dark bg-dark" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Plan" asp-action="Build">Build Plan</a>
+                            <a class="nav-link" asp-area="" asp-controller="Plan" asp-action="Build">Build Plan</a>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
+            </nav>
+        </header>
+    }
+    <section id="currentlyLoggedInStatus">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <span id="welcomeName">Logged in as, @User.Claims.First(m => m.Type == "FullName").Value</span>
+        }
+        else
+        {
+            <p>Not currently logged in</p>
+        }
+    </section>
+    <div id="outterWrapper">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
+
 
 
     <environment include="Development">
@@ -72,7 +87,7 @@
 
     @RenderSection("Scripts", required: false)
     <footer class="layout-footer">
-        &copy; 2019 - NutraZone - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2020 - NutraZone
     </footer>
 </body>
 </html>
